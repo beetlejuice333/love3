@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.envelope {
+  width: 150px;
+  height: 150px;
+  background: url("/konvert.jpg") center/cover no-repeat;
+  position: relative;
+  cursor: pointer;
+}
+
+@keyframes riseAndFall {
+  0% {
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    top: 10%;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    top: 120%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}
+
+@keyframes randomMove {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(var(--random-offset), var(--random-offset));
+  }
+}
+
+.heart {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  animation: riseAndFall 5s forwards, randomMove 5s linear 0s 1 normal;
+}
+
+/* Additional styling for multiple hearts */
+.heart:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.heart:nth-child(3) {
+  animation-delay: 2s;
+}
+
+/* Add more nth-child rules as needed for additional hearts */
+
+/* Media Query для мобильных устройств */
+@media screen and (max-width: 768px) {
+  .envelope {
+    width: 100px;
+    height: 100px;
+  }
+
+  .heart {
+    width: 20px;
+    height: 20px;
+  }
+}
